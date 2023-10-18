@@ -1,0 +1,24 @@
+.sobreParticipantes p{
+    font-weight: bolder;
+    font-size: 20px;
+}
+.sobreParticipantes li{
+    text-align: center;
+    padding: 10px;
+    display: grid;
+    
+    
+}
+
+.sobreProjeto h2{
+    margin-top: 10px;
+    font-weight: bolder;
+    text-align: center;
+    font-size: 20px;
+}
+
+.sobreProjeto p{
+    text-align: center;
+    box-sizing: border-box;
+    margin: 5px 10px
+}

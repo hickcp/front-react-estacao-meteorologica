@@ -22,6 +22,7 @@ const Participantes = () => {
           <ListItem>Marlene</ListItem>
           <ListItem>Denis</ListItem>
           <ListItem>Wagner</ListItem>
+          <ListItem>Rafael</ListItem>
         </UnorderedList>
       </VStack>
 

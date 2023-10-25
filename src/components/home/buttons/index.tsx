@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Atual from './periodos/Atual';
+import { Atual } from './periodos/Atual';
 import { useNavigate } from 'react-router-dom'
 import {
   HStack,
@@ -48,7 +48,7 @@ const Buttons = () => {
       {periodo === 'Atual' && <Atual />}
       {periodo === 'Diária' && <Diaria />}
       {periodo === 'Mensal' && <Mensal />}
-      {periodo === 'Anual' && <Anual />}
+      {periodo === 'Anual' && <Anual />}   
     </VStack>
   );
 };

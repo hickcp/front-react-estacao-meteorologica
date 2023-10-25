@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { getDadoAtual } from "../../../../services/api"
 
 
-const Atual = () => {
+export function Atual (){
 
     const [data, setData] = useState<String>()
     const [pressao, setPressao] = useState<number>()
@@ -13,11 +13,11 @@ const Atual = () => {
 
     useEffect(() => {
         getDadoAtual().then((resp) => {
-            setData(resp.data.toString()),
-                setPressao(resp.pressao),
-                setAltitude(resp.altitude),
-                setTemperatura(resp.temperatura),
-                setUmidade(resp.umidade)
+                setData(resp.dataRegistro.toString());
+                setPressao(resp.pressao);
+                setAltitude(resp.altitude);
+                setTemperatura(resp.temperatura);
+                setUmidade(resp.umidade);
         })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -34,5 +34,3 @@ const Atual = () => {
         </VStack>
     )
 }
-
-export default Atual

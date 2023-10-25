@@ -3,11 +3,15 @@ interface IpifyJson {
 }
 
 interface DadosJson {
-  data: Date,
-  pressao: number,
+  id: number,
   altitude: number,
+  umidade: number,
+  pressao: number,
   temperatura: number,
-  umidade: number
+  dataRegistro: Date,
+  nomeIot: string
+  
+  
 }
 
 export function getPublicIp(): Promise<string> {
@@ -19,7 +23,16 @@ export function getPublicIp(): Promise<string> {
 
 
 export function getDadoAtual(): Promise<DadosJson> {
-  return fetch('localhost:8080/dados/diaria?dataInicio=2023-08-20&dataFim=2023-10-19&idIot=1')
-    .then<DadosJson>((resp) => resp.json())
-    .then((resp) => resp)
+  return fetch('http://localhost:8080/dados/atual/1')
+    .then((resp) => {
+      if (!resp.ok) {
+        throw new Error(`Erro na requisição: ${resp.status} ${resp.statusText}`);
+      }
+      return resp.json();
+    })
+    .then((resp) => resp as DadosJson)
+    .catch((error) => {
+      console.error('Erro ao obter dados atuais:', error);
+      throw error; // Rejeita a promise para que o erro seja propagado
+    });
 }

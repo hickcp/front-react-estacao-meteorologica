@@ -1,19 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { Atual } from './periodos/Atual';
-import { useNavigate } from 'react-router-dom'
-import {
-  HStack,
-  Button,
-  ButtonGroup,
-  VStack
-} from '@chakra-ui/react'
+import { HStack, Button, ButtonGroup, VStack } from '@chakra-ui/react';
 import Diaria from './periodos/Diaria';
 import Mensal from './periodos/Mensal';
 import Anual from './periodos/Anual';
 
 const Buttons = () => {
   const [selecionado, setSelecionado] = useState<number | null | string>(null);
-  const [periodo, setPeriodo] = useState<string>('Atual');
+  const [periodo, setPeriodo] = useState<string>('');
   const handleClique = (indice: number) => {
     setSelecionado(indice === selecionado ? null : indice);
   };
@@ -23,7 +17,6 @@ const Buttons = () => {
     { label: 'Diária', color: 'teal' },
     { label: 'Mensal', color: 'teal' },
     { label: 'Anual', color: 'teal' }
-
   ];
 
   return (
@@ -33,7 +26,10 @@ const Buttons = () => {
           {botoes.map((botao, indice) => (
             <Button
               key={indice}
-              onClick={() => { handleClique(indice); setPeriodo(botao.label); }}
+              onClick={() => {
+                handleClique(indice);
+                setPeriodo(botao.label);
+              }}
               variant={selecionado === indice ? 'solid' : 'outline'}
               colorScheme={botao.color}
               bg={selecionado === indice ? `${botao.color}.500` : 'transparent'}
@@ -44,11 +40,10 @@ const Buttons = () => {
           ))}
         </ButtonGroup>
       </HStack>
-
       {periodo === 'Atual' && <Atual />}
       {periodo === 'Diária' && <Diaria />}
       {periodo === 'Mensal' && <Mensal />}
-      {periodo === 'Anual' && <Anual />}   
+      {periodo === 'Anual' && <Anual />}
     </VStack>
   );
 };

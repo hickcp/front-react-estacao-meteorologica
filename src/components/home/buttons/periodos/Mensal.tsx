@@ -27,7 +27,10 @@ const Mensal = () => {
 
   const fetchDados = async () => {
     getDadoMedia('mensal', dataIda ?? '', dataVolta ?? '').then(resp => {
-      setDados(resp);
+      const dadosOrdenados = resp.sort(
+        (a, b) => new Date(a.dataDia).getTime() - new Date(b.dataDia).getTime()
+      );
+      setDados(dadosOrdenados);
     });
   };
 
